@@ -29,7 +29,7 @@ export default function ProductPage() {
     <div className="animate-fade-in">
       <div className="text-center mb-8">
         <h1 className="text-2xl md:text-3xl font-bold text-gray-100 mb-2">
-          무엇을 <span className="gold-gradient-text">판매</span>하시나요?
+          무엇을 <span className="gold-gradient-text">팔고 싶나요?</span> 혹은 무엇을 <span className="gold-gradient-text">판매중</span>인가요?
         </h1>
         <p className="text-gray-500">제품이나 서비스를 간단히 설명해주세요</p>
       </div>
