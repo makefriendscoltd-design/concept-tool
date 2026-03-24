@@ -58,7 +58,7 @@ export default function ProductPage() {
           disabled={!canProceed}
           onClick={handleNext}
         >
-          AI 컨셉 추천받기
+          윤대표 AI 컨셉 추천받기
         </Button>
       </div>
     </div>

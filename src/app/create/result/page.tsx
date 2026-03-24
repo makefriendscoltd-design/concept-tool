@@ -125,7 +125,7 @@ export default function ResultPage() {
           )}
         </h1>
         {isLoading && (
-          <p className="text-gray-500">AI가 최적의 컨셉을 찾고 있습니다. 잠시만 기다려주세요...</p>
+          <p className="text-gray-500">윤대표 AI가 최적의 컨셉을 찾고 있습니다. 잠시만 기다려주세요...</p>
         )}
       </div>
 

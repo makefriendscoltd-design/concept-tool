@@ -110,7 +110,7 @@ export default function SelectPage() {
         <h1 className="text-2xl md:text-3xl font-bold text-gray-100 mb-2">
           {isLoading ? (
             <>
-              AI가 <span className="gold-gradient-text">맞춤 접근법</span>을 분석하고 있습니다
+              윤대표 AI가 <span className="gold-gradient-text">맞춤 접근법</span>을 분석하고 있습니다
             </>
           ) : recommendations.length > 0 ? (
             <>

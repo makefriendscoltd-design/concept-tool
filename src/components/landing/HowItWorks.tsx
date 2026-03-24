@@ -10,8 +10,8 @@ const STEPS = [
   },
   {
     number: '02',
-    title: 'AI 맞춤 접근법 추천',
-    description: 'AI가 5가지 컨셉 유형별로 제품에 맞는 접근 방향을 추천합니다.',
+    title: '윤대표 AI 맞춤 접근법 추천',
+    description: '윤대표 AI가 5가지 컨셉 유형별로 제품에 맞는 접근 방향을 추천합니다.',
   },
   {
     number: '03',
@@ -20,8 +20,8 @@ const STEPS = [
   },
   {
     number: '04',
-    title: 'AI 맞춤 컨셉 생성',
-    description: 'AI가 모든 정보를 종합하여 최적의 셀링 컨셉을 만들어드립니다.',
+    title: '윤대표 AI 맞춤 컨셉 생성',
+    description: '윤대표 AI가 모든 정보를 종합하여 최적의 셀링 컨셉을 만들어드립니다.',
   },
 ];
 
