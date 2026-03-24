@@ -157,16 +157,20 @@ const TYPE_EXAMPLES: Record<ConceptTypeId, string> = {
 - 왜 효과적: 희소성 + 참여감 + 충성 고객 사전 확보`,
 };
 
-export function buildPrompt(typeId: ConceptTypeId, answers: Answers) {
+export function buildPrompt(typeId: ConceptTypeId, answers: Answers, productDescription?: string) {
   const typeName = TYPE_NAMES[typeId];
   const theory = TYPE_THEORIES[typeId];
   const examples = TYPE_EXAMPLES[typeId];
+
+  const productContext = productDescription
+    ? `\n## 사용자가 판매하려는 제품/서비스\n${productDescription}\n`
+    : '';
 
   const systemPrompt = `당신은 한국 마케팅 분야의 최고 전문가이며, "컨셉의 정석" 방법론에 기반한 셀링 컨셉 제작 전문가입니다.
 
 ## 당신의 역할
 사용자의 제품/서비스 정보를 바탕으로 "${typeName}" 유형의 셀링 컨셉을 5개 생성합니다.
-
+${productContext}
 ## ${typeName}이란?
 ${theory}
 

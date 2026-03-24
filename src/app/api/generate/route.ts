@@ -14,9 +14,10 @@ const VALID_TYPES: ConceptTypeId[] = [
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { conceptTypeId, answers } = body as {
+    const { conceptTypeId, answers, productDescription } = body as {
       conceptTypeId: ConceptTypeId;
       answers: Answers;
+      productDescription?: string;
     };
 
     if (!conceptTypeId || !VALID_TYPES.includes(conceptTypeId)) {
@@ -33,7 +34,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const { systemPrompt, userPrompt } = buildPrompt(conceptTypeId, answers);
+    const { systemPrompt, userPrompt } = buildPrompt(conceptTypeId, answers, productDescription);
 
     const result = streamText({
       model: anthropic('claude-sonnet-4-20250514'),

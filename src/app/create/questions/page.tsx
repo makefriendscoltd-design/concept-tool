@@ -10,20 +10,30 @@ import type { Answers } from '@/types';
 
 export default function QuestionsPage() {
   const router = useRouter();
-  const { selectedType, answers, setAnswers, setStep } = useConceptStore();
+  const { selectedType, productDescription, answers, setAnswers, setStep } = useConceptStore();
 
   useEffect(() => {
+    if (!productDescription) {
+      router.replace('/create/product');
+      return;
+    }
     if (!selectedType) {
       router.replace('/create/select');
       return;
     }
     setStep('questions');
-  }, [selectedType, router, setStep]);
+  }, [selectedType, productDescription, router, setStep]);
 
   if (!selectedType) return null;
 
   const questions = QUESTIONS_BY_TYPE[selectedType];
   const typeInfo = CONCEPT_TYPES.find((t) => t.id === selectedType);
+
+  // Pre-fill the product question with productDescription
+  const mergedAnswers: Answers = {
+    product: productDescription,
+    ...answers,
+  };
 
   const handleSubmit = (newAnswers: Answers) => {
     setAnswers(newAnswers);
@@ -44,7 +54,7 @@ export default function QuestionsPage() {
           <span className="text-sm font-medium text-gold-400">{typeInfo?.nameKo}</span>
         </div>
         <h1 className="text-2xl md:text-3xl font-bold text-gray-100 mb-2">
-          제품 정보를 <span className="gold-gradient-text">알려주세요</span>
+          상세 정보를 <span className="gold-gradient-text">알려주세요</span>
         </h1>
         <p className="text-gray-500">답변이 구체적일수록 더 좋은 컨셉이 나옵니다</p>
       </div>
@@ -52,7 +62,7 @@ export default function QuestionsPage() {
       <div className="card-dark p-6 md:p-8">
         <QuestionForm
           questions={questions}
-          initialAnswers={answers}
+          initialAnswers={mergedAnswers}
           onSubmit={handleSubmit}
           onBack={handleBack}
         />

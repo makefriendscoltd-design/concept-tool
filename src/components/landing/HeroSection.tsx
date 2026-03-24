@@ -38,9 +38,9 @@ export default function HeroSection() {
         </h1>
 
         <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-xl mx-auto leading-relaxed">
-          5가지 질문에 답하면, AI가 당신의 제품에 맞는
+          제품을 입력하면, AI가 맞춤 컨셉 접근법을 추천하고
           <br className="hidden md:block" />
-          <span className="text-gray-300 font-medium"> 셀링 컨셉</span>을 즉시 만들어드립니다
+          최적의 <span className="text-gray-300 font-medium">셀링 컨셉</span>을 만들어드립니다
         </p>
 
         <Link href="/create">

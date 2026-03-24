@@ -12,7 +12,7 @@ import type { ConceptResult } from '@/types';
 
 export default function ResultPage() {
   const router = useRouter();
-  const { selectedType, answers, setStep } = useConceptStore();
+  const { selectedType, answers, productDescription, setStep } = useConceptStore();
   const [parsedConcepts, setParsedConcepts] = useState<ConceptResult[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -35,7 +35,7 @@ export default function ResultPage() {
       const res = await fetch('/api/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ conceptTypeId: selectedType, answers }),
+        body: JSON.stringify({ conceptTypeId: selectedType, answers, productDescription }),
       });
 
       if (!res.ok) {
@@ -76,7 +76,7 @@ export default function ResultPage() {
 
   useEffect(() => {
     if (!selectedType || Object.keys(answers).length === 0) {
-      router.replace('/create/select');
+      router.replace('/create/product');
       return;
     }
     setStep('result');
@@ -90,7 +90,7 @@ export default function ResultPage() {
 
   const handleStartOver = () => {
     useConceptStore.getState().reset();
-    router.push('/create/select');
+    router.push('/create/product');
   };
 
   const handleEditAnswers = () => {

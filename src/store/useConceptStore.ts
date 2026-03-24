@@ -1,10 +1,13 @@
 'use client';
 
 import { create } from 'zustand';
-import type { ConceptTypeId, Answers, ConceptResult, WizardStep } from '@/types';
+import type { ConceptTypeId, Answers, ConceptResult, ConceptRecommendation, WizardStep } from '@/types';
 
 interface ConceptStore {
   currentStep: WizardStep;
+  productDescription: string;
+  recommendations: ConceptRecommendation[];
+  isRecommending: boolean;
   selectedType: ConceptTypeId | null;
   answers: Answers;
   results: ConceptResult[];
@@ -12,6 +15,9 @@ interface ConceptStore {
   error: string | null;
 
   setStep: (step: WizardStep) => void;
+  setProductDescription: (description: string) => void;
+  setRecommendations: (recommendations: ConceptRecommendation[]) => void;
+  setRecommending: (loading: boolean) => void;
   selectType: (type: ConceptTypeId) => void;
   setAnswer: (questionId: string, value: string) => void;
   setAnswers: (answers: Answers) => void;
@@ -22,7 +28,10 @@ interface ConceptStore {
 }
 
 const initialState = {
-  currentStep: 'select' as WizardStep,
+  currentStep: 'product' as WizardStep,
+  productDescription: '',
+  recommendations: [] as ConceptRecommendation[],
+  isRecommending: false,
   selectedType: null as ConceptTypeId | null,
   answers: {} as Answers,
   results: [] as ConceptResult[],
@@ -34,6 +43,9 @@ export const useConceptStore = create<ConceptStore>((set) => ({
   ...initialState,
 
   setStep: (step) => set({ currentStep: step }),
+  setProductDescription: (description) => set({ productDescription: description }),
+  setRecommendations: (recommendations) => set({ recommendations, isRecommending: false }),
+  setRecommending: (loading) => set({ isRecommending: loading, error: null }),
   selectType: (type) => set({ selectedType: type, currentStep: 'questions' }),
   setAnswer: (questionId, value) =>
     set((state) => ({

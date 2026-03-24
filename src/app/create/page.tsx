@@ -10,7 +10,7 @@ export default function CreatePage() {
 
   useEffect(() => {
     reset();
-    router.replace('/create/select');
+    router.replace('/create/product');
   }, [reset, router]);
 
   return null;

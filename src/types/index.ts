@@ -34,4 +34,14 @@ export interface ConceptResult {
   strength: string;
 }
 
-export type WizardStep = 'select' | 'questions' | 'result';
+export type WizardStep = 'product' | 'select' | 'questions' | 'result';
+
+export interface ConceptRecommendation {
+  typeId: ConceptTypeId;
+  typeNameKo: string;
+  icon: string;
+  approachTitle: string;
+  approachDescription: string;
+  previewExample: string;
+  color: string;
+}
