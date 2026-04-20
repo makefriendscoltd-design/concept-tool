@@ -1,5 +1,5 @@
 import { streamText } from 'ai';
-import { anthropic } from '@ai-sdk/anthropic';
+import { google } from '@ai-sdk/google';
 
 export async function POST(req: Request) {
   try {
@@ -59,7 +59,7 @@ export async function POST(req: Request) {
 이 제품에 대해 5가지 컨셉 유형별로 각각 맞춤 접근 방향을 추천해주세요.`;
 
     const result = streamText({
-      model: anthropic('claude-sonnet-4-20250514'),
+      model: google('gemini-2.5-pro'),
       system: systemPrompt,
       prompt: userPrompt,
       temperature: 0.8,

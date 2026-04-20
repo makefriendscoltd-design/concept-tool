@@ -1,5 +1,5 @@
 import { streamText } from 'ai';
-import { anthropic } from '@ai-sdk/anthropic';
+import { google } from '@ai-sdk/google';
 import { buildPrompt } from '@/lib/ai/prompts';
 import type { ConceptTypeId, Answers } from '@/types';
 
@@ -37,7 +37,7 @@ export async function POST(req: Request) {
     const { systemPrompt, userPrompt } = buildPrompt(conceptTypeId, answers, productDescription);
 
     const result = streamText({
-      model: anthropic('claude-sonnet-4-20250514'),
+      model: google('gemini-2.5-pro'),
       system: systemPrompt,
       prompt: userPrompt,
       temperature: 0.8,
