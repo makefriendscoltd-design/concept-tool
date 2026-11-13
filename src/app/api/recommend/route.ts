@@ -1,7 +1,7 @@
 import { streamText } from 'ai';
 import { google } from '@ai-sdk/google';
 
-export async function POST(req: Request) {
+async function disabledPOST(req: Request) {
   try {
     const body = await req.json();
     const { productDescription } = body as { productDescription: string };
@@ -74,4 +74,10 @@ export async function POST(req: Request) {
       { status: 500 }
     );
   }
+}
+
+// 2026-11-13 운영 종료: 로그인 없이 AI 호출이 가능해 비용이 새는 걸 막으려고 닫음. 되살리려면 아래를 지우고 위 함수를 다시 export.
+void disabledPOST;
+export async function POST() {
+  return Response.json({ error: "운영 종료된 서비스입니다." }, { status: 410 });
 }
